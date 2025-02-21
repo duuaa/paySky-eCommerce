@@ -1,0 +1,71 @@
+<div class="p-6 mt-20">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl font-bold">Products</h2>
+    <button
+      class="bg-blue-500 text-white px-4 py-2 rounded"
+      (click)="openAddProduct()"
+    >
+      Add Product
+    </button>
+  </div>
+  <div *ngIf="showProductForm" class="mb-6 border p-4 rounded">
+    <app-product-form
+      [product]="selectedProduct"
+      (formSubmit)="handleProductFormSubmit($event)"
+      [categories]="categories"
+    >
+    </app-product-form>
+    <button class="mt-2 text-gray-500" (click)="closeProductForm()">
+      Cancel
+    </button>
+  </div>
+  <div class="flex justify-center items-center m-2">
+    <button
+      class="bg-green-500 text-white px-2 py-1 rounded m-2"
+      (click)="fetchProducts()"
+    >
+      {{ "All" }}
+    </button>
+    <button
+      class="bg-green-500 text-white px-2 py-1 rounded m-2"
+      *ngFor="let category of categories"
+      (click)="filterByCategory(category)"
+    >
+      {{ category }}
+    </button>
+  </div>
+  <!-- جدول عرض المنتجات -->
+  <table class="min-w-full bg-white">
+    <thead>
+      <tr>
+        <th class="py-2 px-4 border">ID</th>
+        <th class="py-2 px-4 border">Title</th>
+        <th class="py-2 px-4 border">Price</th>
+        <th class="py-2 px-4 border">Category</th>
+        <th class="py-2 px-4 border">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td class="py-2 px-4 border">{{ product.id }}</td>
+        <td class="py-2 px-4 border">{{ product.title }}</td>
+        <td class="py-2 px-4 border">{{ product.price | currency }}</td>
+        <td class="py-2 px-4 border">{{ product.category }}</td>
+        <td class="py-2 px-4 border">
+          <button
+            class="bg-green-500 text-white px-2 py-1 rounded mr-2"
+            (click)="openEditProduct(product)"
+          >
+            Edit
+          </button>
+          <button
+            class="bg-red-500 text-white px-2 py-1 rounded"
+            (click)="deleteProduct(product.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

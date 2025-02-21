@@ -1,0 +1,8 @@
+<app-sidebar [isSidebarOpen]="isSidebarOpen"></app-sidebar>
+<app-header (toggleSidebar)="toggleSidebar()"></app-header>
+<main
+  class="ml-0 md:ml-64 mt-20 p-4 transition-all duration-300"
+  [ngClass]="{ 'ml-0': !isSidebarOpen,  }"
+>
+  <router-outlet></router-outlet>
+</main>
