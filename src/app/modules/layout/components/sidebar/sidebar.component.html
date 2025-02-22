@@ -3,21 +3,21 @@
     'translate-x-0': isSidebarOpen,
     '-translate-x-full': !isSidebarOpen
   }"
-  class="bg-gray-800 text-white w-64 h-full fixed top-0 left-0 transition-transform duration-300 z-50"
+  class="bg-[#99d2f4] text-white w-64 h-full fixed top-0 left-0 transition-transform duration-300 z-50"
 >
   <div class="p-4 text-xl font-bold">Admin Panel</div>
   <nav class="mt-4">
     <ul>
-      <li class="p-2 hover:bg-gray-700">
+      <li class="p-2 hover:bg-gray-700" (click)="toggleSidebar()">
         <a routerLink="/" routerLinkActive="font-bold">Dashboard</a>
       </li>
-      <li class="p-2 hover:bg-gray-700">
+      <li class="p-2 hover:bg-gray-700" (click)="toggleSidebar()">
         <a routerLink="/products" routerLinkActive="font-bold">Products</a>
       </li>
-      <li class="p-2 hover:bg-gray-700">
+      <li class="p-2 hover:bg-gray-700" (click)="toggleSidebar()">
         <a routerLink="/categories" routerLinkActive="font-bold">Categories</a>
       </li>
-      <li class="p-2 hover:bg-gray-700">
+      <li class="p-2 hover:bg-gray-700" (click)="toggleSidebar()">
         <a routerLink="/login" routerLinkActive="font-bold" (click)="logout()"
           >Logout</a
         >

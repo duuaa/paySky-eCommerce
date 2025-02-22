@@ -8,7 +8,6 @@ import { Component, HostListener, Input } from '@angular/core';
 export class SidebarComponent {
   @Input() isSidebarOpen = true;
 
-  // نتحقق من حجم الشاشة ونقوم بتعيين الشريط مغلقًا للشاشات الصغيرة
   constructor() {
     this.checkScreenWidth();
   }

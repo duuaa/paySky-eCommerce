@@ -10,6 +10,7 @@ import { product } from '../../models/product.model';
 export class ProductsComponent {
   products: product[] = [];
   showProductForm = false;
+  viewMode: boolean = false;
   selectedProduct: product | null = null;
   categories: string[] = [];
 
@@ -38,8 +39,13 @@ export class ProductsComponent {
   openEditProduct(product: any): void {
     this.selectedProduct = product;
     this.showProductForm = true;
+    this.viewMode = false;
   }
-
+  viewProduct(product: any): void {
+    this.selectedProduct = product;
+    this.showProductForm = true;
+    this.viewMode = true;
+  }
   closeProductForm(): void {
     this.showProductForm = false;
   }

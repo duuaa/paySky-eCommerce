@@ -7,9 +7,10 @@ import { product } from '../../models/product.model';
   templateUrl: './product-form.component.html',
 })
 export class ProductFormComponent implements OnInit {
-  @Input() product: product | null = null; // إذا كانت موجودة يعني وضع التعديل
+  @Input() product: product | null = null;
   @Output() formSubmit = new EventEmitter<any>();
   @Input() categories: string[] = [];
+  @Input() viewMode: boolean = false;
   productForm!: FormGroup;
   isEditMode = false;
 
@@ -32,12 +33,14 @@ export class ProductFormComponent implements OnInit {
         Validators.required,
       ],
     });
+    if (this.viewMode && this.product) {
+      this.productForm.disable();
+    }
   }
 
   onSubmit(): void {
     if (this.productForm.valid) {
       const formValue = this.productForm.value;
-      // في وضع التعديل، نضيف الـ id لتحديث المنتج
       if (this.isEditMode) {
         formValue.id = this.product?.id;
       }

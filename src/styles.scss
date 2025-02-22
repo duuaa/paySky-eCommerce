@@ -6,6 +6,12 @@ html,
 body {
   height: 100%;
 }
+html {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: block;
+  position: relative;
+}
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
